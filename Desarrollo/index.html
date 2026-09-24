@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <title>Generador de paletas</title>
+</head>
+<body>
+    <header>
+        <h1>Generador de paletas</h1>
+        <p>Generá una combinación de colores para tu próximo proyecto.</p>
+    </header>
+
+    <main>
+        <section aria-labelledby="titulo-controles">
+            <h2 id="titulo-controles">Creá tu paleta</h2>
+
+            <label for="cantidad">Cantidad de colores</label>
+
+            <select id="cantidad">
+                <option value="6">6 colores</option>
+                <option value="8">8 colores</option>
+                <option value="9">9 colores</option>
+            </select>
+
+            <button id="generar" type="button">Generar paleta</button>
+        </section>
+
+        <section aria-labelledby="titulo-paleta">
+            <h2 id="titulo-paleta">Tu paleta</h2>
+
+            <div id="paleta"></div>
+        </section>
+
+        <p id="mensaje" role="status"></p>
+    </main>
+
+    <footer>
+        <p>Proyecto integrador de Nicolás Gregorio</p>
+    </footer>
+        <script src="script.js"></script>
+</body>
+</body>
+</html>
