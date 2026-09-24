@@ -131,3 +131,117 @@ button:focus-visible {
         grid-template-columns: 1fr;
     }
 }
+/* Fondo oscuro con luces de color */
+body {
+    min-height: 100vh;
+    background-color: #0b1020;
+    background-image:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(139, 92, 246, 0.22),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(34, 211, 238, 0.12),
+            transparent 40%
+        );
+}
+
+/* Encabezado */
+header {
+    padding: 48px 20px 32px;
+}
+
+h1 {
+    margin: 0 0 12px;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: -1.5px;
+}
+
+header p {
+    line-height: 1.6;
+}
+
+/* Paneles */
+section {
+    background-color: #172033;
+    border: 1px solid #35415a;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón principal */
+#generar {
+    background: linear-gradient(135deg, #c4b5fd, #a5f3fc);
+    color: #111827;
+    box-shadow: 0 4px 16px rgba(167, 139, 250, 0.2);
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+#generar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(167, 139, 250, 0.35);
+}
+
+#generar:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Tarjetas */
+.tarjeta-color {
+    border: 1px solid #475569;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    animation: aparecer 350ms ease both;
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.tarjeta-color:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+}
+
+.muestra-color {
+    height: 170px;
+}
+
+.tarjeta-color p {
+    padding: 16px 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Entrada progresiva de las tarjetas */
+.tarjeta-color:nth-child(2) { animation-delay: 30ms; }
+.tarjeta-color:nth-child(3) { animation-delay: 60ms; }
+.tarjeta-color:nth-child(4) { animation-delay: 90ms; }
+.tarjeta-color:nth-child(5) { animation-delay: 120ms; }
+.tarjeta-color:nth-child(6) { animation-delay: 150ms; }
+.tarjeta-color:nth-child(7) { animation-delay: 180ms; }
+.tarjeta-color:nth-child(8) { animation-delay: 210ms; }
+.tarjeta-color:nth-child(9) { animation-delay: 240ms; }
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        translate: 0 12px;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+/* Respetar a quienes prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    #generar,
+    .tarjeta-color {
+        animation: none;
+        transition: none;
+        transform: none;
+    }
+}

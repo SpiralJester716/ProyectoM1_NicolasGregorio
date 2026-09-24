@@ -2,6 +2,7 @@ const botonGenerar = document.getElementById("generar");
 const selectorCantidad = document.getElementById("cantidad");
 const mensaje = document.getElementById("mensaje");
 const contenedorPaleta = document.getElementById("paleta");
+const hojaColores = document.getElementById("colores-dinamicos").sheet;
 
 function generarColor() {
     const tono = Math.floor(Math.random() * 360);
@@ -17,18 +18,31 @@ function generarPaleta() {
 
     contenedorPaleta.replaceChildren();
 
-    for (let i = 0; i < cantidad; i++) {
-        const color = generarColor();
-        colores.push(color);
+    // Borramos las reglas de los colores anteriores.
+    while (hojaColores.cssRules.length > 0) {
+        hojaColores.deleteRule(0);
     }
 
-    for (const color of colores) {
+    // Generamos la lista de colores.
+    for (let i = 0; i < cantidad; i++) {
+        colores.push(generarColor());
+    }
+
+    // Creamos una tarjeta y una regla CSS para cada color.
+    for (let i = 0; i < colores.length; i++) {
+        const color = colores[i];
+        const claseColor = `color-${i}`;
+
+        hojaColores.insertRule(
+            `.${claseColor} { background-color: ${color}; }`,
+            hojaColores.cssRules.length
+        );
+
         const tarjeta = document.createElement("div");
         tarjeta.classList.add("tarjeta-color");
 
         const muestra = document.createElement("div");
-        muestra.classList.add("muestra-color");
-        muestra.style.backgroundColor = color;
+        muestra.classList.add("muestra-color", claseColor);
 
         const codigo = document.createElement("p");
         codigo.textContent = color;
