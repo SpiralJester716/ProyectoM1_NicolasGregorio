@@ -1,19 +1,15 @@
 const botonGenerar = document.getElementById("generar");
-const selectorCantidad = document.getElementById("cantidad");
 const mensaje = document.getElementById("mensaje");
 const contenedorPaleta = document.getElementById("paleta");
-const hojaColores = document.getElementById("colores-dinamicos").sheet;
 
-function generarColor() {
-    const tono = Math.floor(Math.random() * 360);
-    const saturacion = 70;
-    const luminosidad = 60;
-
-    return convertirHslAHex(tono, saturacion, luminosidad);
-}
 
 function generarPaleta() {
-    const cantidad = Number(selectorCantidad.value);
+    const hojaColores = document.getElementById("colores-dinamicos").sheet;
+
+    const cantidad = Number(
+        document.querySelector('input[name="cantidad"]:checked').value
+    );
+
     const colores = [];
 
     contenedorPaleta.replaceChildren();
@@ -55,6 +51,14 @@ function generarPaleta() {
 }
 
 botonGenerar.addEventListener("click", generarPaleta);
+
+function generarColor() {
+    const tono = Math.floor(Math.random() * 360);
+    const saturacion = Math.floor(Math.random() * 31) + 60;
+    const luminosidad = Math.floor(Math.random() * 21) + 40;
+
+    return convertirHslAHex(tono, saturacion, luminosidad);
+}
 
 function convertirHslAHex(tono, saturacion, luminosidad) {
     const s = saturacion / 100;

@@ -17,15 +17,53 @@
         <section aria-labelledby="titulo-controles">
             <h2 id="titulo-controles">Creá tu paleta</h2>
 
-            <label for="cantidad">Cantidad de colores</label>
+            <fieldset class="selector-cantidad">
+    <legend>Cantidad de colores</legend>
 
-            <select id="cantidad">
-                <option value="6">6 colores</option>
-                <option value="8">8 colores</option>
-                <option value="9">9 colores</option>
-            </select>
+    <div class="cantidad-opciones">
+        <input
+            class="cantidad-radio"
+            type="radio"
+            name="cantidad"
+            id="cantidad-6"
+            value="6"
+            checked
+        >
+        <label class="cantidad-opcion" for="cantidad-6">
+            <span class="cantidad-numero">6</span>
+            <span class="cantidad-texto">colores</span>
+        </label>
 
-            <button id="generar" type="button">Generar paleta</button>
+        <input
+            class="cantidad-radio"
+            type="radio"
+            name="cantidad"
+            id="cantidad-8"
+            value="8"
+        >
+        <label class="cantidad-opcion" for="cantidad-8">
+            <span class="cantidad-numero">8</span>
+            <span class="cantidad-texto">colores</span>
+        </label>
+
+        <input
+            class="cantidad-radio"
+            type="radio"
+            name="cantidad"
+            id="cantidad-9"
+            value="9"
+        >
+        <label class="cantidad-opcion" for="cantidad-9">
+            <span class="cantidad-numero">9</span>
+            <span class="cantidad-texto">colores</span>
+        </label>
+    </div>
+</fieldset>
+
+            <button id="generar" type="button">
+    <span class="generar-icono" aria-hidden="true">✦</span>
+    <span>Generar paleta</span>
+</button>
         </section>
 
         <section aria-labelledby="titulo-paleta">

@@ -245,3 +245,241 @@ section {
         transform: none;
     }
 }
+/* Botón principal */
+#generar {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-height: 48px;
+    padding: 14px 26px;
+    overflow: hidden;
+
+    border: 1px solid #ddd6fe;
+    border-radius: 14px;
+    background: linear-gradient(120deg, #c4b5fd, #a5f3fc);
+    color: #111827;
+
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+/* Reflejo decorativo, inicialmente fuera del botón */
+#generar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background: linear-gradient(
+        110deg,
+        transparent 25%,
+        rgba(255, 255, 255, 0.55) 50%,
+        transparent 75%
+    );
+
+    transform: translateX(-120%);
+}
+
+/* Ícono decorativo */
+#generar .generar-icono {
+    display: inline-block;
+    font-size: 1.3em;
+    line-height: 1;
+    transition: transform 250ms ease;
+}
+
+/* Hover solo en dispositivos con mouse o equivalente */
+@media (hover: hover) {
+    #generar:hover {
+        transform: translateY(-2px);
+        box-shadow:
+            0 8px 24px rgba(0, 0, 0, 0.3),
+            0 0 20px rgba(165, 243, 252, 0.18);
+    }
+
+    #generar:hover::before {
+        animation: brillo-boton 650ms ease;
+    }
+
+    #generar:hover .generar-icono {
+        transform: rotate(90deg);
+    }
+}
+
+/* Señal clara al navegar con Tab */
+#generar:focus-visible {
+    outline: 3px solid #fbbf24;
+    outline-offset: 5px;
+}
+
+/* Respuesta al presionar */
+#generar:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes brillo-boton {
+    from {
+        transform: translateX(-120%);
+    }
+
+    to {
+        transform: translateX(120%);
+    }
+}
+
+/* Accesibilidad: respetar la preferencia de menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    #generar,
+    #generar .generar-icono,
+    #generar::before {
+        animation: none;
+        transition: none;
+    }
+
+    #generar:hover,
+    #generar:active,
+    #generar:hover .generar-icono {
+        transform: none;
+    }
+
+    #generar:hover::before {
+        animation: none;
+    }
+}
+/* Grupo de selección */
+.selector-cantidad {
+    min-width: 0;
+    margin: 0 0 22px;
+    padding: 0;
+    border: 0;
+}
+
+.selector-cantidad legend {
+    margin-bottom: 12px;
+    padding: 0;
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* Base oscura que contiene las opciones */
+.cantidad-opciones {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+
+    width: 100%;
+    max-width: 360px;
+    padding: 8px;
+
+    border: 1px solid #475569;
+    border-radius: 20px;
+    background: #0b1020;
+
+    box-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, 0.35),
+        0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Ocultar el círculo, conservando el acceso con teclado */
+.cantidad-radio {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Cada opción */
+.cantidad-opciones .cantidad-opcion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+
+    min-height: 76px;
+    margin: 0;
+    padding: 12px 8px;
+
+    border: 2px solid transparent;
+    border-radius: 13px;
+    background: #172033;
+    color: #cbd5e1;
+    cursor: pointer;
+
+    transition:
+        transform 180ms ease,
+        background-color 180ms ease,
+        color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.cantidad-numero {
+    font-size: 1.7rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.cantidad-texto {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Hover solo con dispositivos que lo permiten */
+@media (hover: hover) {
+    .cantidad-opcion:hover {
+        background-color: #26334b;
+        color: #ffffff;
+        transform: translateY(-2px);
+    }
+}
+
+/* Opción seleccionada */
+.cantidad-radio:checked + .cantidad-opcion {
+    border-color: #e9d5ff;
+    background: linear-gradient(135deg, #c4b5fd, #a5f3fc);
+    color: #111827;
+
+    box-shadow:
+        0 4px 16px rgba(167, 139, 250, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Foco visible al usar el teclado */
+.cantidad-radio:focus-visible + .cantidad-opcion {
+    outline: 3px solid #fbbf24;
+    outline-offset: 3px;
+}
+
+/* Respuesta al presionar */
+.cantidad-opciones .cantidad-opcion:active {
+    transform: scale(0.96);
+}
+
+/* Respetar la preferencia de menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    .cantidad-opciones .cantidad-opcion {
+        transition: none;
+        transform: none;
+    }
+}
