@@ -21,11 +21,11 @@ para mostrarlos junto a cada muestra.
 
 ## Instrucciones de uso
 
-1. Abrir la aplicación.
+1. Abrir la aplicación. https://spiraljester716.github.io/ProyectoM1_NicolasGregorio/Desarrollo/
 2. Seleccionar la cantidad de colores: 6, 8 o 9.
 3. Presionar "Generar paleta".
 4. Consultar los colores y sus códigos HEX.
 5. Presionar nuevamente el botón para obtener otra combinación.
 
 
-## Descripción
+
